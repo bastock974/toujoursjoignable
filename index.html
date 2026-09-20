@@ -1,43 +1,64 @@
 <title>Toujours Joignable</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600;700&display=swap">
 <style>
   :root {
-    --ground:  #FBFAF8;
-    --surface: #FFFFFF;
-    --sunk:    #F1EFEA;
-    --ink:     #14181C;
-    --muted:   #555E66;
-    --faint:   #8B939A;
-    --line:    #E2DED7;
-    --accent:  #1B6E4F;
-    --accent-w:#E6F1EB;
-    --accent-d:#14563E;
+    --ground:   #FBFAF7;
+    --surface:  #FFFFFF;
+    --sunk:     #F2EFE9;
+    --ink:      #14181A;
+    --muted:    #545C61;
+    --faint:    #8A9196;
+    --line:     #E4E0D8;
+    --deep:     #0F3D2E;
+    --deep-txt: #F2EFE9;
+    --deep-mut: #A9C4B8;
+    --accent:   #127354;
+    --accent-w: #E4F0EA;
+    --bubble-in:  #FFFFFF;
+    --bubble-out: #D7F2C8;
+    --chat-bg:  #EAE3DA;
+    --chat-txt: #14181A;
+    --shadow:   0 1px 2px rgba(20,24,26,.05), 0 10px 30px rgba(20,24,26,.09);
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --ground:  #101315;
-      --surface: #171B1E;
-      --sunk:    #1D2225;
-      --ink:     #EAECEE;
-      --muted:   #A6AEB4;
-      --faint:   #79828A;
-      --line:    #2A3033;
-      --accent:  #5FBE93;
-      --accent-w:#16281F;
-      --accent-d:#7ED0A8;
+      --ground:   #0E1113;
+      --surface:  #161A1C;
+      --sunk:     #1C2123;
+      --ink:      #E9ECED;
+      --muted:    #A3ABAF;
+      --faint:    #798185;
+      --line:     #282E30;
+      --deep:     #0C2F24;
+      --deep-txt: #E9F2ED;
+      --deep-mut: #8FB3A4;
+      --accent:   #54BC94;
+      --accent-w: #13291F;
+      --bubble-in:  #202628;
+      --bubble-out: #14443A;
+      --chat-bg:  #11171A;
+      --chat-txt: #E9ECED;
+      --shadow:   0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35);
     }
   }
   :root[data-theme="dark"] {
-    --ground:  #101315;
-    --surface: #171B1E;
-    --sunk:    #1D2225;
-    --ink:     #EAECEE;
-    --muted:   #A6AEB4;
-    --faint:   #79828A;
-    --line:    #2A3033;
-    --accent:  #5FBE93;
-    --accent-w:#16281F;
-    --accent-d:#7ED0A8;
+    --ground:   #0E1113;
+    --surface:  #161A1C;
+    --sunk:     #1C2123;
+    --ink:      #E9ECED;
+    --muted:    #A3ABAF;
+    --faint:    #798185;
+    --line:     #282E30;
+    --deep:     #0C2F24;
+    --deep-txt: #E9F2ED;
+    --deep-mut: #8FB3A4;
+    --accent:   #54BC94;
+    --accent-w: #13291F;
+    --bubble-in:  #202628;
+    --bubble-out: #14443A;
+    --chat-bg:  #11171A;
+    --chat-txt: #E9ECED;
+    --shadow:   0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35);
   }
 
   * { box-sizing: border-box; }
@@ -51,154 +72,256 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  h1, h2, h3, .big {
+  h1, h2, h3, .big, .logo {
     font-family: "Bricolage Grotesque", system-ui, sans-serif;
-    margin: 0; text-wrap: balance; letter-spacing: -.02em;
+    margin: 0; text-wrap: balance; letter-spacing: -.022em;
   }
-  h1 { font-size: clamp(2.1rem, 8.5vw, 3.4rem); font-weight: 800; line-height: 1.04; }
-  h2 { font-size: clamp(1.5rem, 5.5vw, 2rem); font-weight: 700; line-height: 1.12; }
-  h3 { font-size: 1.15rem; font-weight: 700; letter-spacing: -.01em; }
-  p { margin: 0; }
+  h1 { font-size: clamp(2.2rem, 9vw, 3.6rem); font-weight: 800; line-height: 1.02; }
+  h2 { font-size: clamp(1.6rem, 6vw, 2.15rem); font-weight: 700; line-height: 1.1; }
+  h3 { font-size: 1.12rem; font-weight: 700; letter-spacing: -.012em; }
+  p  { margin: 0; }
 
-  .wrap { max-width: 40rem; margin: 0 auto; padding-inline: 22px; }
-  section { padding-block: 52px; border-top: 1px solid var(--line); }
-  section:first-of-type { border-top: none; }
+  .wrap { max-width: 41rem; margin: 0 auto; padding-inline: 20px; }
   .stack { display: flex; flex-direction: column; gap: 18px; }
 
   .eyebrow {
-    font-size: .76rem; font-weight: 600; letter-spacing: .15em;
+    font-size: .74rem; font-weight: 700; letter-spacing: .16em;
     text-transform: uppercase; color: var(--accent);
   }
+  .eyebrow.on-deep { color: var(--deep-mut); }
+
+  /* ---------- barre collante ---------- */
+  .bar {
+    position: sticky; top: 0; z-index: 30;
+    background: var(--deep);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  .bar-in {
+    max-width: 41rem; margin: 0 auto; padding: 11px 20px;
+    display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  }
+  .logo { font-size: 1.05rem; font-weight: 800; color: var(--deep-txt); letter-spacing: -.02em; }
+  .logo .dot { color: #6FD39F; }
+  .bar a.mini {
+    background: #6FD39F; color: #0B2C21;
+    font-weight: 700; font-size: .88rem; text-decoration: none;
+    padding: 8px 16px; border-radius: 999px; white-space: nowrap;
+  }
+  .bar a.mini:hover { background: #8FE0B5; }
 
   /* ---------- hero ---------- */
-  header { padding-block: 64px 46px; }
-  .lede { font-size: 1.16rem; color: var(--muted); max-width: 32rem; }
-  .cta {
+  .hero { background: var(--deep); color: var(--deep-txt); padding-block: 54px 62px; }
+  .hero h1 { color: var(--deep-txt); }
+  .hero .lede { font-size: 1.14rem; color: var(--deep-mut); max-width: 31rem; }
+  .hero .cta {
     display: inline-block; align-self: flex-start;
-    background: var(--accent); color: #fff;
-    font-weight: 600; font-size: 1.02rem; text-decoration: none;
-    padding: 14px 26px; border-radius: 3px;
-    border: 1px solid var(--accent);
+    background: #6FD39F; color: #0B2C21;
+    font-weight: 700; font-size: 1.04rem; text-decoration: none;
+    padding: 15px 30px; border-radius: 3px;
   }
-  :root[data-theme="dark"] .cta, :root:not([data-theme="light"]) .cta { color: #0E1A14; }
-  @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .cta { color: #fff; } }
-  .cta:hover { background: var(--accent-d); border-color: var(--accent-d); }
-  .cta-note { font-size: .92rem; color: var(--faint); }
+  .hero .cta:hover { background: #8FE0B5; }
+  .hero .note { font-size: .93rem; color: var(--deep-mut); }
+  .live { display: inline-flex; align-items: center; gap: 8px; font-size: .84rem; font-weight: 600; color: #6FD39F; }
+  .pulse { width: 8px; height: 8px; border-radius: 50%; background: #6FD39F; box-shadow: 0 0 0 0 rgba(111,211,159,.7); animation: p 2.4s infinite; }
+  @keyframes p { 0%{box-shadow:0 0 0 0 rgba(111,211,159,.6)} 70%{box-shadow:0 0 0 9px rgba(111,211,159,0)} 100%{box-shadow:0 0 0 0 rgba(111,211,159,0)} }
+  @media (prefers-reduced-motion: reduce) { .pulse { animation: none; } }
 
-  /* ---------- probleme ---------- */
+  /* ---------- sections ---------- */
+  section { padding-block: 54px; }
+  section.alt { background: var(--sunk); }
+
+  /* ---------- telephone ---------- */
+  .phone-sec { background: var(--sunk); }
+  .phone {
+    max-width: 22rem; margin: 0 auto; width: 100%;
+    background: var(--chat-bg); border-radius: 22px;
+    box-shadow: var(--shadow); overflow: hidden;
+    border: 1px solid var(--line);
+  }
+  .phone-top {
+    background: var(--deep); color: var(--deep-txt);
+    padding: 13px 16px; display: flex; align-items: center; gap: 11px;
+  }
+  .avatar {
+    width: 34px; height: 34px; border-radius: 50%; flex: none;
+    background: #6FD39F; color: #0B2C21;
+    display: grid; place-items: center; font-weight: 800; font-size: .9rem;
+    font-family: "Bricolage Grotesque", sans-serif;
+  }
+  .phone-top .nm { font-weight: 600; font-size: .96rem; line-height: 1.2; }
+  .phone-top .st { font-size: .76rem; color: #6FD39F; }
+  .chat { padding: 16px 13px 18px; display: flex; flex-direction: column; gap: 9px; }
+  .msg {
+    max-width: 82%; padding: 9px 13px; border-radius: 12px;
+    font-size: .93rem; line-height: 1.45; color: var(--chat-txt);
+    position: relative; box-shadow: 0 1px 1px rgba(0,0,0,.06);
+  }
+  .msg.them { background: var(--bubble-in); align-self: flex-start; border-top-left-radius: 3px; }
+  .msg.me   { background: var(--bubble-out); align-self: flex-end;  border-top-right-radius: 3px; }
+  .msg .t { display: block; font-size: .68rem; color: var(--faint); text-align: right; margin-top: 3px; }
+  .chat-cap { text-align: center; font-size: .88rem; color: var(--muted); margin-top: 16px; }
+
+  /* ---------- douleur ---------- */
   .pain {
     background: var(--surface); border: 1px solid var(--line);
     border-left: 4px solid var(--accent);
-    padding: 22px 24px; border-radius: 3px;
-    font-size: 1.1rem;
+    padding: 22px 24px; border-radius: 3px; font-size: 1.1rem;
   }
-  .pain strong { font-weight: 600; }
 
-  /* ---------- listes ---------- */
-  .feats { display: flex; flex-direction: column; gap: 20px; }
-  .feat { display: grid; grid-template-columns: 1.5rem 1fr; gap: 14px; align-items: start; }
-  .feat .tick {
-    width: 1.5rem; height: 1.5rem; border-radius: 50%;
-    background: var(--accent-w); color: var(--accent);
-    display: grid; place-items: center; font-size: .82rem; font-weight: 700;
-    margin-top: 2px;
+  /* ---------- cartes ---------- */
+  .cards { display: grid; gap: 13px; }
+  @media (min-width: 620px) { .cards { grid-template-columns: 1fr 1fr; } }
+  .card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 4px; padding: 20px;
+    display: flex; flex-direction: column; gap: 8px;
   }
-  .feat p { color: var(--muted); font-size: .98rem; margin-top: 3px; }
+  .card .ico {
+    width: 2.1rem; height: 2.1rem; border-radius: 6px;
+    background: var(--accent-w); color: var(--accent);
+    display: grid; place-items: center; font-size: 1.05rem; font-weight: 700;
+  }
+  .card p { color: var(--muted); font-size: .96rem; }
 
   /* ---------- etapes ---------- */
-  .steps { display: flex; flex-direction: column; gap: 0; }
-  .st { display: grid; grid-template-columns: 2.4rem 1fr; gap: 16px; padding-bottom: 26px; position: relative; }
-  .st:not(:last-child)::before {
-    content: ""; position: absolute; left: 1.15rem; top: 2.6rem; bottom: 0;
-    width: 2px; background: var(--line);
+  .steps { display: flex; flex-direction: column; }
+  .st-row { display: grid; grid-template-columns: 2.5rem 1fr; gap: 16px; padding-bottom: 26px; position: relative; }
+  .st-row:not(:last-child)::before {
+    content: ""; position: absolute; left: 1.2rem; top: 2.7rem; bottom: 0; width: 2px; background: var(--line);
   }
-  .st .n {
+  .st-row .n {
     font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 1.05rem;
-    width: 2.4rem; height: 2.4rem; border-radius: 50%;
-    background: var(--ink); color: var(--ground);
+    width: 2.5rem; height: 2.5rem; border-radius: 50%;
+    background: var(--deep); color: var(--deep-txt);
     display: grid; place-items: center; z-index: 1;
   }
-  .st p { color: var(--muted); font-size: .98rem; margin-top: 4px; }
+  .st-row p { color: var(--muted); font-size: .97rem; margin-top: 4px; }
+
+  /* ---------- tags ---------- */
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    background: var(--surface); border: 1px solid var(--line);
+    font-size: .92rem; font-weight: 500; padding: 8px 15px; border-radius: 999px;
+  }
+  .tag.hot { background: var(--accent-w); border-color: var(--accent); color: var(--accent); font-weight: 600; }
 
   /* ---------- tarifs ---------- */
   .price-box {
-    background: var(--surface); border: 1px solid var(--line);
-    border-radius: 3px; padding: 26px 24px;
-    display: flex; flex-direction: column; gap: 12px;
+    background: var(--deep); color: var(--deep-txt);
+    border-radius: 4px; padding: 30px 26px;
+    display: flex; flex-direction: column; gap: 13px;
   }
-  .big { font-size: clamp(1.9rem, 7vw, 2.4rem); font-weight: 800; color: var(--accent); line-height: 1; }
-  .price-box p { color: var(--muted); font-size: .98rem; }
-
-  /* ---------- pour qui ---------- */
-  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
-  .tag {
-    background: var(--sunk); color: var(--ink);
-    font-size: .92rem; font-weight: 500;
-    padding: 7px 14px; border-radius: 999px;
-  }
+  .big { font-size: clamp(2rem, 8vw, 2.7rem); font-weight: 800; color: #6FD39F; line-height: 1; }
+  .price-box p { color: var(--deep-mut); font-size: .99rem; }
+  .price-box strong { color: var(--deep-txt); }
 
   /* ---------- contact ---------- */
-  .contact { background: var(--sunk); border-radius: 3px; padding: 26px 24px; }
+  .contact {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 4px; padding: 26px 24px;
+  }
   .contact a { color: var(--accent); font-weight: 600; text-decoration: none; }
   .contact a:hover { text-decoration: underline; }
 
-  /* ---------- pied ---------- */
   footer {
-    border-top: 1px solid var(--line);
-    padding-block: 34px 56px;
-    font-size: .86rem; color: var(--faint);
-    display: flex; flex-direction: column; gap: 9px;
+    background: var(--sunk); border-top: 1px solid var(--line);
+    padding-block: 34px 52px; font-size: .85rem; color: var(--faint);
   }
+  footer .stack { gap: 9px; }
   footer a { color: var(--muted); }
-  footer h3 { font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); font-weight: 600; }
+  footer h3 { font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); font-weight: 700; font-family: "Public Sans", sans-serif; }
   a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 </style>
 
-<div class="wrap">
+<div class="bar">
+  <div class="bar-in">
+    <span class="logo">Toujours Joignable<span class="dot">.</span></span>
+    <a class="mini" href="#contact">Démonstration</a>
+  </div>
+</div>
 
-  <header class="stack">
-    <span class="eyebrow">Assistant de réponse pour commerçants</span>
+<div class="hero">
+  <div class="wrap stack">
+    <span class="live"><span class="pulse"></span>Répond 24 h/24, même le dimanche</span>
     <h1>Vos clients vous écrivent. On répond pour vous.</h1>
-    <p class="lede">Un assistant qui répond à vos clients sur WhatsApp, 24 h sur 24, avec vos vrais tarifs et vos vrais horaires — et qui prend les rendez-vous directement dans votre agenda.</p>
+    <p class="lede">Un assistant qui répond sur WhatsApp avec vos vrais tarifs et vos vrais horaires — et qui prend les rendez-vous directement dans votre agenda.</p>
     <a class="cta" href="#contact">Voir une démonstration</a>
-    <p class="cta-note">Gratuite, sur place, en 10 minutes.</p>
-  </header>
+    <p class="note">Gratuite, chez vous, en 10 minutes.</p>
+  </div>
+</div>
 
-  <section class="stack">
+<section class="phone-sec">
+  <div class="wrap stack" style="gap:24px">
+    <div class="stack" style="gap:10px;text-align:center;align-items:center">
+      <span class="eyebrow">Concrètement</span>
+      <h2>Voilà ce que voit votre client.</h2>
+    </div>
+
+    <div class="phone">
+      <div class="phone-top">
+        <span class="avatar">G</span>
+        <div>
+          <p class="nm">Garage Saint-Éloi</p>
+          <p class="st">en ligne</p>
+        </div>
+      </div>
+      <div class="chat">
+        <p class="msg me">Bonjour, vous êtes ouverts samedi ?<span class="t">19:42</span></p>
+        <p class="msg them">Bonjour ! Oui, le samedi de 9h à 13h. Je peux vous renseigner sur une prestation ?<span class="t">19:42</span></p>
+        <p class="msg me">Une vidange pour ma Clio essence, c'est combien ?<span class="t">19:43</span></p>
+        <p class="msg them">À partir de 89 € en huile minérale, 129 € en synthétique. Ce sont des tarifs indicatifs, ça dépend du modèle. Je regarde nos disponibilités ?<span class="t">19:43</span></p>
+        <p class="msg me">oui mardi si possible<span class="t">19:44</span></p>
+        <p class="msg them">Mardi 22, je peux vous proposer 10h ou 16h. Lequel vous arrange ?<span class="t">19:44</span></p>
+      </div>
+    </div>
+
+    <p class="chat-cap">Un samedi soir, 19 h 42. Le garage est fermé depuis six heures.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap stack">
     <span class="eyebrow">Le problème</span>
-    <h2>Un client qui n'obtient pas de réponse appelle le suivant.</h2>
+    <h2>Un client sans réponse appelle le suivant.</h2>
     <p class="pain">Vous êtes sous une voiture, en clientèle, ou déjà au téléphone. Le samedi à 19 h, le dimanche, pendant les congés — <strong>personne ne décroche.</strong> Et ce client-là ne rappellera pas.</p>
     <p style="color:var(--muted)">Ce ne sont pas des clients perdus faute de compétence ou de prix. Juste faute d'avoir été joignable à ce moment-là.</p>
-  </section>
+  </div>
+</section>
 
-  <section class="stack">
-    <span class="eyebrow">Ce que fait l'assistant</span>
+<section class="alt">
+  <div class="wrap stack">
+    <span class="eyebrow">Ce qu'il fait</span>
     <h2>Il connaît votre métier. Rien d'autre.</h2>
-    <div class="feats">
-      <div class="feat"><span class="tick">✓</span><div><h3>Il répond avec VOS informations</h3><p>Vos tarifs, vos horaires, vos prestations. Il ne connaît que ce que vous lui avez donné — et rien d'autre.</p></div></div>
-      <div class="feat"><span class="tick">✓</span><div><h3>Il n'invente jamais un prix</h3><p>Si l'information n'est pas dans votre fiche, il le dit et renvoie vers vous. Jamais d'approximation qui vous engagerait.</p></div></div>
-      <div class="feat"><span class="tick">✓</span><div><h3>Il prend les rendez-vous</h3><p>Il consulte votre agenda réel, ne propose que des créneaux vraiment libres, et respecte vos horaires d'ouverture.</p></div></div>
-      <div class="feat"><span class="tick">✓</span><div><h3>Il sait s'arrêter</h3><p>Devis complexe, client mécontent, urgence : il ne discute pas, il vous passe la main tout de suite.</p></div></div>
+    <div class="cards">
+      <div class="card"><span class="ico">€</span><h3>Vos tarifs, pas les siens</h3><p>Il ne connaît que la fiche que vous avez validée. Vos prix, vos horaires, vos prestations.</p></div>
+      <div class="card"><span class="ico">✕</span><h3>Il n'invente jamais</h3><p>Si l'information n'est pas dans votre fiche, il le dit et renvoie vers vous. Jamais d'approximation qui vous engagerait.</p></div>
+      <div class="card"><span class="ico">◷</span><h3>Il prend les rendez-vous</h3><p>Il lit votre agenda réel, ne propose que des créneaux libres, et respecte vos horaires d'ouverture.</p></div>
+      <div class="card"><span class="ico">↗</span><h3>Il sait s'arrêter</h3><p>Devis complexe, client mécontent, urgence : il ne discute pas, il vous passe la main tout de suite.</p></div>
     </div>
-  </section>
+    <p style="color:var(--muted);font-size:.96rem">Avant chaque mise en service, je le teste sur 20 questions dont 8 pièges — un devis impossible à chiffrer, un créneau qui n'existe pas, une demande de remise. Je peux vous montrer les résultats.</p>
+  </div>
+</section>
 
-  <section class="stack">
+<section>
+  <div class="wrap stack">
     <span class="eyebrow">Comment ça se passe</span>
     <h2>Vous n'avez presque rien à faire.</h2>
     <div class="steps">
-      <div class="st"><span class="n">1</span><div><h3>On se voit 30 minutes</h3><p>Vous me donnez vos tarifs, vos horaires, et ce que vos clients vous demandent tous les jours.</p></div></div>
-      <div class="st"><span class="n">2</span><div><h3>Je m'occupe de tout</h3><p>Configuration, WhatsApp, agenda, démarches auprès de Meta. Vous n'avez aucune manipulation technique à faire.</p></div></div>
-      <div class="st"><span class="n">3</span><div><h3>Vous relisez, et c'est en service</h3><p>Je vous montre l'assistant répondre à vos propres questions. Vous corrigez ce qui ne va pas, et il travaille.</p></div></div>
+      <div class="st-row"><span class="n">1</span><div><h3>On se voit 30 minutes</h3><p>Vous me donnez vos tarifs, vos horaires, et ce qu'on vous demande tous les jours.</p></div></div>
+      <div class="st-row"><span class="n">2</span><div><h3>Je m'occupe de tout</h3><p>Configuration, WhatsApp, agenda, démarches administratives. Aucune manipulation technique de votre côté.</p></div></div>
+      <div class="st-row"><span class="n">3</span><div><h3>Vous relisez, et c'est en service</h3><p>Je vous montre l'assistant répondre à vos propres questions. Vous corrigez ce qui ne va pas, et il travaille.</p></div></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="stack">
+<section class="alt">
+  <div class="wrap stack">
     <span class="eyebrow">Pour qui</span>
     <h2>Les métiers où l'on ne peut pas décrocher.</h2>
     <div class="tags">
-      <span class="tag">Garages</span>
-      <span class="tag">Carrosseries</span>
-      <span class="tag">Auto-écoles</span>
+      <span class="tag hot">Garages</span>
+      <span class="tag hot">Carrosseries</span>
+      <span class="tag hot">Auto-écoles</span>
       <span class="tag">Plombiers</span>
       <span class="tag">Électriciens</span>
       <span class="tag">Chauffagistes</span>
@@ -206,38 +329,43 @@
       <span class="tag">Toiletteurs</span>
     </div>
     <p style="color:var(--muted)">Le point commun : des tarifs et des horaires qui se répètent, des rendez-vous à caler, et les mains occupées toute la journée.</p>
-  </section>
+  </div>
+</section>
 
-  <section class="stack">
+<section>
+  <div class="wrap stack">
     <span class="eyebrow">Tarifs</span>
-    <h2>Un coût d'installation, puis un abonnement.</h2>
+    <h2>Une installation, puis un abonnement.</h2>
     <div class="price-box">
       <p class="big">À partir de 490 €</p>
-      <p>d'installation, puis <strong>79 € par mois</strong>, sans engagement de durée.</p>
-      <p>Le prix final dépend de votre activité et de ce que vous voulez inclure — page vitrine, rattrapage des appels manqués. Je vous fais un devis gratuit après notre rendez-vous.</p>
+      <p>d'installation, puis <strong>79 € par mois</strong> — <strong>sans engagement de durée.</strong></p>
+      <p>Le prix final dépend de votre activité et de ce que vous voulez inclure : page vitrine, rattrapage des appels manqués. Devis gratuit après notre rendez-vous.</p>
     </div>
-    <p style="color:var(--muted)">Un client récupéré par mois rembourse largement l'abonnement. C'est le calcul qu'on fera ensemble, avec vos chiffres.</p>
-  </section>
+    <p style="color:var(--muted)">Un seul client récupéré par mois rembourse largement l'abonnement. C'est le calcul qu'on fera ensemble, avec vos chiffres à vous.</p>
+  </div>
+</section>
 
-  <section class="stack" id="contact">
+<section class="alt" id="contact">
+  <div class="wrap stack">
     <span class="eyebrow">Parlons-en</span>
     <h2>La démonstration dure 10 minutes.</h2>
-    <p style="color:var(--muted)">Je viens chez vous, vous posez vos propres questions à l'assistant, et vous voyez ce qu'il répond. Sans engagement, et sans discours technique.</p>
+    <p style="color:var(--muted)">Je viens chez vous, vous posez vos propres questions à l'assistant, et vous voyez ce qu'il répond. Sans engagement, sans discours technique.</p>
     <div class="contact">
-      <p style="margin-bottom:6px"><strong>Bastien Nativel</strong> — Fresnes (94)</p>
+      <p style="margin-bottom:8px"><strong>Bastien Nativel</strong> — Fresnes (94)</p>
       <p>Écrivez-moi : <a href="mailto:bastien.ntvl@gmail.com">bastien.ntvl@gmail.com</a></p>
-      <p style="margin-top:10px;font-size:.93rem;color:var(--faint)">Je me déplace dans le Val-de-Marne et les communes limitrophes.</p>
+      <p style="margin-top:12px;font-size:.93rem;color:var(--faint)">Je me déplace dans le Val-de-Marne et les communes limitrophes.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer>
+<footer>
+  <div class="wrap stack">
     <h3>Mentions légales</h3>
     <p>Éditeur : Bastien Nativel, entrepreneur individuel — Fresnes (94), France.<br>
        SIRET : <em>à compléter</em> · Contact : <a href="mailto:bastien.ntvl@gmail.com">bastien.ntvl@gmail.com</a><br>
        Directeur de la publication : Bastien Nativel.</p>
     <p>Hébergement : GitHub Pages — GitHub Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.</p>
     <p><a href="politique-confidentialite.html">Politique de confidentialité</a></p>
-    <p style="margin-top:6px">WhatsApp est une marque de Meta Platforms, Inc. Ce service n'est pas affilié à Meta.</p>
-  </footer>
-
-</div>
+    <p style="margin-top:4px">La conversation présentée en exemple illustre le fonctionnement du service avec un garage fictif. WhatsApp est une marque de Meta Platforms, Inc. Ce service n'est pas affilié à Meta.</p>
+  </div>
+</footer>
