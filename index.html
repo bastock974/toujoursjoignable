@@ -223,6 +223,25 @@
   .contact a { color: var(--accent); font-weight: 600; text-decoration: none; }
   .contact a:hover { text-decoration: underline; }
 
+  /* ---------- faq ---------- */
+  .faq { display: flex; flex-direction: column; gap: 9px; }
+  details.q {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 4px; overflow: hidden;
+  }
+  details.q summary {
+    padding: 16px 18px; cursor: pointer; font-weight: 600; font-size: 1.01rem;
+    list-style: none; display: flex; justify-content: space-between; gap: 14px; align-items: center;
+  }
+  details.q summary::-webkit-details-marker { display: none; }
+  details.q summary::after {
+    content: "+"; font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 1.45rem; color: var(--accent); flex: none; line-height: 1;
+  }
+  details.q[open] summary::after { content: "−"; }
+  details.q[open] summary { border-bottom: 1px solid var(--line); }
+  details.q .a { padding: 15px 18px; color: var(--muted); font-size: .97rem; }
+
   footer {
     background: var(--sunk); border-top: 1px solid var(--line);
     padding-block: 34px 52px; font-size: .85rem; color: var(--faint);
@@ -342,6 +361,39 @@
       <p>Le prix final dépend de votre activité et de ce que vous voulez inclure : page vitrine, rattrapage des appels manqués. Devis gratuit après notre rendez-vous.</p>
     </div>
     <p style="color:var(--muted)">Un seul client récupéré par mois rembourse largement l'abonnement. C'est le calcul qu'on fera ensemble, avec vos chiffres à vous.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap stack">
+    <span class="eyebrow">Questions fréquentes</span>
+    <h2>Ce qu'on me demande le plus souvent.</h2>
+    <div class="faq">
+      <details class="q">
+        <summary>Est-ce que je dois changer de numéro ?</summary>
+        <p class="a">Non. Vous gardez le vôtre, celui qui est sur votre enseigne et vos devis. L'assistant utilise une ligne dédiée que je fournis — vos clients ne la composent jamais, ils y accèdent par un lien depuis votre fiche Google ou votre site.</p>
+      </details>
+      <details class="q">
+        <summary>Et s'il raconte n'importe quoi à mes clients ?</summary>
+        <p class="a">Il ne connaît que la fiche que vous avez validée : vos tarifs, vos horaires, vos prestations. Quand l'information n'y est pas, il le dit et renvoie vers vous — il n'improvise pas. Avant chaque mise en service, je le teste sur 20 questions dont 8 sont des pièges : un devis impossible à chiffrer, un créneau inexistant, une demande de remise. Je vous montre les résultats.</p>
+      </details>
+      <details class="q">
+        <summary>Est-ce que je garde la main sur ce qu'il répond ?</summary>
+        <p class="a">Entièrement. Tout ce qu'il sait tient dans une fiche que vous relisez et corrigez. Un tarif change ? Vous me le dites, je modifie la fiche, et il suit. Et sur les sujets délicats — devis complexe, client mécontent, urgence — il ne discute pas : il vous passe la main immédiatement.</p>
+      </details>
+      <details class="q">
+        <summary>Combien de temps pour l'installer ?</summary>
+        <p class="a">Trente minutes avec vous, le reste je m'en occupe de mon côté. Comptez quelques jours au total, le temps que WhatsApp valide le dossier. Vous n'avez aucune manipulation technique à faire.</p>
+      </details>
+      <details class="q">
+        <summary>Je n'ai pas de site internet, c'est bloquant ?</summary>
+        <p class="a">Pas du tout, et c'est souvent le cas. Le service se branche sur WhatsApp, pas sur un site. Si vous en voulez un, je peux vous faire une page vitrine en complément — mais ce n'est pas nécessaire pour démarrer.</p>
+      </details>
+      <details class="q">
+        <summary>Je peux arrêter quand je veux ?</summary>
+        <p class="a">Oui, l'abonnement est sans engagement de durée. Vous prévenez, et c'est arrêté le mois suivant. L'installation, elle, reste acquise puisque le travail a été fait.</p>
+      </details>
+    </div>
   </div>
 </section>
 
